@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Entity/Entity.cs" type="Script" id=1]
+[ext_resource path="res://src/Entity/StateMachine/StateMachine.cs" type="Script" id=2]
+
+[node name="Entity" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="StateMachineDebug" type="Control" parent="."]
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="StateMachineDebug"]
+modulate = Color( 1, 1, 1, 0.627451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="StateMachineDebug"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 48.0
+margin_bottom = 24.0
+rect_scale = Vector2( 0.25, 0.25 )
+text = "State"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="Transitioned" from="StateMachine" to="StateMachine" method="_on_StateMachine_Transitioned"]
