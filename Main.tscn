@@ -8,3 +8,5 @@
 [node name="Game" parent="." instance=ExtResource( 2 )]
 
 [node name="GameGUI" parent="." instance=ExtResource( 3 )]
+
+[editable path="Game"]

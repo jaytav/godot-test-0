@@ -9,10 +9,12 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Stats" type="Node" parent="."]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
 
 [node name="StateMachineDebug" type="Control" parent="."]
 margin_left = -8.0
