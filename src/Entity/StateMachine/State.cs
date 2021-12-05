@@ -17,6 +17,18 @@ public class State : Node {
         // Implement what happens when exiting state
     }
 
+    public virtual void Process(float delta) {
+        // Implement what happens in stateMachine._Process(float delta)
+    }
+
+    public virtual void PhysicsProcess(float delta) {
+        // Implement what happens in stateMachine._PhysicsProcess(float delta)
+    }
+
+    public virtual void UnhandledInput(InputEvent @event) {
+        // Implement what happens in stateMachine._UnhandledInput(InputEvent @event)
+    }
+
     private StateMachine getStateMachine() {
         Node node = GetParent();
 
