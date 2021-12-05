@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Entity/StateMachine/State.cs" type="Script" id=1]
+[ext_resource path="res://src/Entity/Entity.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/entity.png" type="Texture" id=4]
+[ext_resource path="res://src/Test/Entity/TurnSkip/State/TurnSkipActive.cs" type="Script" id=5]
+
+[node name="TurnSkip" instance=ExtResource( 2 )]
+
+[node name="StateMachine" parent="." index="1"]
+debug = true
+initialState = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource( 1 )
+
+[node name="Active" type="Node" parent="StateMachine" index="1"]
+script = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="StateMachine/Active" index="0"]
+one_shot = true
+
+[node name="Sprite" parent="." index="2"]
+modulate = Color( 0.576471, 0.576471, 0.576471, 1 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 4 )
+
+[connection signal="timeout" from="StateMachine/Active/Timer" to="StateMachine/Active" method="_on_Timer_timeout"]

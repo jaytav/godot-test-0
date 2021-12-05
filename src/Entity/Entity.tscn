@@ -47,4 +47,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="EndTurn" from="." to="StateMachine" method="_on_Entity_EndTurn"]
+[connection signal="StartTurn" from="." to="StateMachine" method="_on_Entity_StartTurn"]
 [connection signal="Transitioned" from="StateMachine" to="StateMachine" method="_on_StateMachine_Transitioned"]

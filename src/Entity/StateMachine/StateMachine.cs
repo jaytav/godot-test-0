@@ -27,6 +27,10 @@ public class StateMachine : Node {
         stateMachineDebug = Owner.GetNode<Control>("StateMachineDebug");
         stateMachineDebugLabel = stateMachineDebug.GetNode<Label>("Label");
 
+        if (!debug) {
+            stateMachineDebug.Visible = false;
+        }
+
         state = GetNode<State>(initialState);
         state.Enter();
         EmitSignal("Transitioned", null, state);
@@ -66,5 +70,19 @@ public class StateMachine : Node {
         }
 
         stateMachineDebugLabel.Text = toState.Name;
+    }
+
+    private void _on_Entity_StartTurn() {
+        TransitionTo("Active");
+
+        // if Active state does not exist, emit EndTurn
+        if (GetNode("Active") == null) {
+            Owner.EmitSignal("EndTurn");
+        }
+    }
+
+    private void _on_Entity_EndTurn() {
+        // at EndTurn, transition back to Idle
+        TransitionTo("Idle");
     }
 }
