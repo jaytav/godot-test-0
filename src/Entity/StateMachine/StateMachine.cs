@@ -33,15 +33,15 @@ public class StateMachine : Node {
     }
 
     public override void _Process(float delta) {
-        state.Process(delta);
+        state._Process(delta);
     }
 
     public override void _PhysicsProcess(float delta) {
-        state.PhysicsProcess(delta);
+        state._PhysicsProcess(delta);
     }
 
     public override void _UnhandledInput(InputEvent @event) {
-        state.UnhandledInput(@event);
+        state._UnhandledInput(@event);
     }
 
     public void TransitionTo(string targetStatePath, Dictionary msg = null) {
